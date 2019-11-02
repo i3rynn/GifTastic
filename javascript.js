@@ -36,6 +36,23 @@ $(document).on('click','.searchButton',function(){
                 searchDiv.append(p);
                 searchDiv.append(image);
                 $('#searches').append(searchDiv);
-
+            }
+    })
+})
+$(document).on('click','.searchImage',function(){
+    var state = $(this).attr('data-state');
+    if(state == 'still'){
+        $(this).attr('src',$(this).data('animated'));
+        $(this).attr('data-state', 'animated');
+    }else{
+        $(this).attr('src',$(this).data('still'));
+        $(this).attr('data-state', 'still'); 
     }
+})
+
+$('#addSearch').on('click',function(){
+    var newSearch = $('input').eq(0).val();
+    searchArray.push(newSearch);
+    populateButtons(searchArray,'searchButton','#buttonsArea');
+    return false;
 })
